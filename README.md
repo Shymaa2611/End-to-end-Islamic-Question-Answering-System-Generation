@@ -18,14 +18,16 @@ GATE is built upon AraBERT and utilizes the Arabic Triplet Matryoshka training s
 
 For zero-answer detection, a threshold-based decision mechanism is applied. If all reranked passages score below a predefined threshold, the question is classified as having no valid answer, and the system returns −1.
 ###  In-Context Learning
-In-Context Learning (ICL) is a learning paradigm in which a language model performs a task by conditioning on a small set of input–output examples (demonstrations) provided within the prompt, without requiring any parameter updates. This enables a single language model to handle diverse NLP tasks through inference alone, making ICL an attractive alternative to supervised fine-tuning . However, previous studies have shown that the performance of ICL is highly sensitive to the choice of demonstrations . As a result,recent work has focused on developing effective demonstration retrieval strategies for in-context learning. Existing approaches to demonstration retrieval generally fall into two categories. The first relies on off-the-shelf retrieval models, such as BM25 or Sentence-BERT, to retrieve demonstrations that are lexically or semantically similar to the test query. While these methods provide empirical    improvements, they rely primarily on coarse similarity measures. In this work, we adopt a retrieval–reranking-based demonstration selection strategy, inspired by our passage retrieval pipeline Given an input question, we first retrieve a set of candidate passages from the training data using a dense retriever. To further refine the selection, we apply a GATE cross-encoder reranker to re-evaluate the relevance between the input question and each candidate passage. The reranker assigns fine-grained relevance scores, and the top-ranked passages are selected as most relevant candiated passages . For
-each relevant candiated passages , we extract the associated question–answer pair from the training
-set and treat it as a candidate in-context demonstration.These demonstrations are then incorpo-
-rated into the prompt and provided to the language model for inference.This retrieval–reranking
-approach enables the selection of demonstrations that are not only semantically similar to the in-
-put question, but also highly relevant at the interaction level, resulting in more informative and
-effective in-context learning.
-
+In-Context Learning (ICL) enables a language model to perform a task by conditioning on a small set of input–output demonstrations included directly in the prompt, without updating model parameters.
+While effective, ICL performance is highly sensitive to demonstration selection.
+To address this, we adopt a retrieval–reranking-based demonstration selection strategy, inspired by our passage retrieval pipeline:
+-For a given input question, candidate passages are retrieved from the training set using a dense 
+ retriever.
+- These candidates are reranked using the GATE cross-encoder to compute fine-grained relevance scores.
+- The top-ranked passages are selected, and their associated question–answer pairs are extracted from the  
+  training data.
+- These pairs are used as in-context demonstrations.
+This approach ensures that demonstrations are not only semantically similar to the input question, but also highly relevant at the interaction level, resulting in more effective and informative ICL.
 ###  Answer Generation
 
 Final answer generation is performed using a large language model (LLM) from Mistral AI.
