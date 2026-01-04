@@ -33,14 +33,13 @@ This approach ensures that demonstrations are not only semantically similar to t
 Final answer generation is performed using a large language model (LLM) from Mistral AI.
 The model is explicitly constrained to generate answers only from the retrieved and reranked evidence, ensuring grounded and reliable outputs.
 Answer generation is formulated as an answer extraction task using a structured prompt with two components:
-In-Context Demonstrations ,Each demonstration follows a fixed structure:
 
+- In-Context Demonstrations ,Each demonstration follows a fixed structure:
 Context: Retrieved passages
 Question: Demonstration query
 Answer: Ground-truth response
 
-Test Instance
-
+- Test Instance
 Question: User input
 Context: Top-K reranked passages
 Answer: Left empty for model generation
