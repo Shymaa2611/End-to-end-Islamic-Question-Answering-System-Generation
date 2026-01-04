@@ -2,7 +2,9 @@
 
 This repository presents an end-to-end Arabic Islamic Question Answering (QA) system designed to answer religious questions using authoritative Islamic sources, namely the Holy Qur’an and Hadith.
 The system integrates retrieval-augmented generation with in-context learning (ICL), where carefully selected demonstrations guide the answer generation process to improve accuracy, relevance, and faithfulness to source texts.
-![Proposed End-to-end Islamic Question Answering Generation System](images\framework.png)
+
+![Proposed End-to-End Islamic Question Answering Generation System](images/framework.png)
+
 ## Methodology
 
 ### Retrieval
