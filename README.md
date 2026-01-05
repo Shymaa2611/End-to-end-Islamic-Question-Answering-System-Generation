@@ -1,9 +1,9 @@
-# End-to-End Islamic Question Answering Generation System
+# End-to-End Islamic Question Answering System
 
 This repository presents an end-to-end Arabic Islamic Question Answering (QA) system designed to answer religious questions using authoritative Islamic sources, namely the Holy Qur’an and Hadith.
 The system integrates retrieval-augmented generation with in-context learning (ICL), where carefully selected demonstrations guide the answer generation process to improve accuracy, relevance, and faithfulness to source texts.
 
-![Proposed End-to-End Islamic Question Answering Generation System](images/framework.png)
+![Proposed End-to-End Islamic Question Answering System](images/framework.png)
 
 ## Methodology
 
@@ -28,10 +28,10 @@ To address this, we adopt a retrieval–reranking-based demonstration selection 
   training data.
 - These pairs are used as in-context demonstrations.
 This approach ensures that demonstrations are not only semantically similar to the input question, but also highly relevant at the interaction level, resulting in more effective and informative ICL.
-###  Answer Generation
+###  Answer EXtraction
 
-Final answer generation is performed using a large language model (LLM) from Mistral AI.
-The model is explicitly constrained to generate answers only from the retrieved and reranked evidence, ensuring grounded and reliable outputs.
+Final answer extract is performed using a large language model (LLM) from Mistral AI.
+The model is explicitly constrained to extract answers only from the retrieved and reranked evidence, ensuring grounded and reliable outputs.
 Answer generation is formulated as an answer extraction task using a structured prompt with two components:
 
 - In-Context Demonstrations ,Each demonstration follows a fixed structure:
@@ -86,7 +86,7 @@ pip install -r requirements.txt
 
 ```
 
-5- Run System:
+4- Run System:
  - To Run Demonstrations Selection
  ```bash
 
@@ -101,6 +101,13 @@ pip install -r requirements.txt
 
 ```
 
+5- Evaluate System
+
+```bash
+
+!python src/Evaluation/eval.py
+
+```
 
 
 
