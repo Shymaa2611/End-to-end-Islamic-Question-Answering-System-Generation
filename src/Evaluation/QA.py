@@ -57,7 +57,8 @@ model = CrossEncoder("yoriis/GTE-tydi-quqa-haqa")
 diacritics_pattern = re.compile(r'[\u064B-\u0652\u0670]')
 
 quran_passages = []
-with open("/content/Islamic-Question-Answering-System/data/QH-QA-25_Subtask2_QPC_v1.1.tsv", "r", encoding="utf-8") as f:
+
+with open("/content/End-to-end-Islamic-Question-Answering-System/data/QH-QA-25_Subtask2_QPC_v1.1.tsv", "r", encoding="utf-8") as f:
     for line in f:
         parts = line.strip().split("\t")
         if len(parts) >= 2:
@@ -108,7 +109,7 @@ def search(query, k_quran=50, k_hadith=20):
 
 
 # Predict Question RElevant Passages
-def predict_Question_rerank_crossencoder(question, model, search_fn, k_retrieve=70, score_threshold=0.15, max_returned=70):
+def predict_Question_rerank_crossencoder(question, model, search_fn, k_retrieve=70, score_threshold=0.15, max_returned=5):
     all_results = []
     retrieved = search_fn(question)
     candidate_texts = [r["text"] for r in retrieved]

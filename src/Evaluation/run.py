@@ -51,7 +51,7 @@ def load_passages_csv(file_path, source_name):
         })
     return passages
 
-quran_passages = load_passages_csv("/content/Islamic-Question-Answering-System/data/QUQA/train_quqa.csv", "quran")
+quran_passages = load_passages_csv("/content/End-to-end-Islamic-Question-Answering-System/data/QUQA/train_quqa.csv", "quran")
 
 all_passages = quran_passages 
 
@@ -75,7 +75,7 @@ def search(query, k_quran=50, k_hadith=20):
     results = sorted(results, key=lambda x: x['score'], reverse=True)
     return results
 
-def predict_Question_rerank_with_QA(question, model, search_fn, all_passages, k_retrieve=70, score_threshold=0.15, max_returned=2):
+def predict_Question_rerank_with_QA(question, model, search_fn, all_passages, k_retrieve=70, score_threshold=0.15, max_returned=1):
     all_results = []
     retrieved = search_fn(question)
     candidate_texts = [r["text"] for r in retrieved]
