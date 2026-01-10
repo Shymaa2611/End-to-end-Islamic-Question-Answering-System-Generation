@@ -30,7 +30,6 @@ def main():
         question = item["question"]
         ground_truth = item["answer"]
         prediction=item["generatedAnswer"]
-        prediction=QA_with_in_context_learning_model(question)
         print("Question",question)
         print("answer",prediction)
         print("ground_truth",ground_truth)
@@ -55,6 +54,8 @@ def main():
  
 if __name__ == "__main__":
     main()
+
+
 
 
 

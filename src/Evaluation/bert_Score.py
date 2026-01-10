@@ -45,7 +45,7 @@ def compute_bert_score(truth, prediction):
 
 # ===== Main evaluation loop =====
 def main():
-    eval_data = load_data_csv("/content/test_data_oneshot_70.csv")
+    eval_data = load_data_csv("/content/End-to-end-Islamic-Question-Answering-System/data/Evaluation Data/Zeroshot/test_data_zeroshot_10.csv")
     P_scores, R_scores, F1_scores = [], [], []
     for item in eval_data:
         truth = item["answer"]
