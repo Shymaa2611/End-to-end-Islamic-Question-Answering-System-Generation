@@ -34,9 +34,9 @@ The model is explicitly constrained to extract answers only from the retrieved a
 Answer generation is formulated as an answer extraction task using a structured prompt with two components:
 
 - In-Context Demonstrations ,Each demonstration follows a fixed structure:
-Context: Retrieved passages
-Question: Demonstration query
-Answer: Ground-truth response
+Context: a passage selected from the top reranked passages retrieved from the training dataset for the input query
+Question:selected from the training dataset and semantically related to the chosen context
+Answer: corresponding to the ground-truth response associated with that question.
 
 - Test Instance
 Question: User input
@@ -44,7 +44,6 @@ Context: Top-K reranked passages
 Answer: Left empty for model generation
 By enforcing a consistent context–question–answer format, the model is guided to produce answers that are faithful to the retrieved evidence, significantly reducing hallucinations and improving answer quality.
 
-![Prompt Template](images/template.png)
 
 
 ## Installation & Requirements
@@ -110,6 +109,9 @@ pip install -r requirements.txt
 !python src/Evaluation/eval.py
 
 ```
+
+
+
 
 
 
